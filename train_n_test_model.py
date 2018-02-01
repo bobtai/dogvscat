@@ -48,11 +48,10 @@ def train_model():
                      padding='same'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
 
-    # add flatten layer to convert 64*25*25 pictures to 1D vector
+    # add flatten layer to convert 128*width*height pictures to 1D vector
     model.add(Flatten())
-    # model.add(Dropout(rate=0.20))
 
-    # add dense layer has 1024 neurons
+    # add dense layer has 512 neurons
     model.add(Dense(512, activation='relu'))  # hidden layer
     # if training result is overfitting, add dropout to avoid overfitting
     model.add(Dropout(rate=0.30))
@@ -73,7 +72,7 @@ def train_model():
               verbose=2)  # show the training process
 
     # save model
-    model.save(MODEL_PATH)
+    model.save(img_utils.MODEL_PATH)
     print("Training model is successful.")
 
 
