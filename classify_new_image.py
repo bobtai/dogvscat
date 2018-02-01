@@ -11,6 +11,7 @@ model = load_model(img_utils.MODEL_PATH)
 
 
 def classify_new_image(image_path):
+    # normalize data
     image = load_img(image_path, target_size=(img_utils.TARGET_WIDTH, img_utils.TARGET_HEIGHT))
     image_feature = img_to_array(image)
     image_feature = image_feature.reshape(-1, img_utils.TARGET_WIDTH, img_utils.TARGET_HEIGHT, 3)

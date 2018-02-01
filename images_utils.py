@@ -25,7 +25,6 @@ def get_all_images_path(image_type):
     """
     to get all paths of cat or dog images
     :param image_type: "cat" or "dog"
-    :param images_dir: the images directory of cat or dog
     :return: the paths of cat or dog images
     """
     images_dir = CAT_IMAGES_PATH if image_type == CAT else DOG_IMAGES_PATH
