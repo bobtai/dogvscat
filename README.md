@@ -42,7 +42,7 @@ train_n_test_model.py
 if __name__ == "__main__":
     train_model()
 ```
-訓練完，模型如下：
+訓練完，模型如下：  
 ![](https://raw.githubusercontent.com/bobtai/dogvscat/master/images/model.png)
 
 ## test model
