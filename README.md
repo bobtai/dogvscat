@@ -2,16 +2,24 @@
 
 ## Data Source
 來源一：原網站（需登入）
+
 <https://www.kaggle.com/c/dogs-vs-cats/data>
+
 來源二：微軟（可直接下載）
+
 <https://www.microsoft.com/en-us/download/details.aspx?id=54765>
 
 ## Raw Data
 貓圖：共 12500 張，0.jpg ~ 12499.jpg
+
 範例：1.jpg
+
 ![](https://raw.githubusercontent.com/bobtai/dogvscat/master/images/raw_data_cat.png)
+
 狗圖：共 12500 張，0.jpg ~ 12499.jpg
+
 範例：4.jpg
+
 ![](https://raw.githubusercontent.com/bobtai/dogvscat/master/images/raw_data_dog.png)
 
 ## Preprocessed data
@@ -29,6 +37,7 @@ if __name__ == "__main__":
     prepare_data(TEST_DATA, 10001, 2500)
 ```
 產生好的資料集如下：
+
 ![](https://raw.githubusercontent.com/bobtai/dogvscat/master/images/dataset.png)
 
 ## train and save model
@@ -42,7 +51,8 @@ train_n_test_model.py
 if __name__ == "__main__":
     train_model()
 ```
-訓練完，模型如下：  
+訓練完，模型如下：
+
 ![](https://raw.githubusercontent.com/bobtai/dogvscat/master/images/model.png)
 
 ## test model
