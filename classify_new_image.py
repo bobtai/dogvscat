@@ -1,4 +1,4 @@
-import images_utils as img_utils
+import image_utils as img_utils
 
 import matplotlib.pyplot as plt
 

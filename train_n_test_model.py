@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-import images_utils as img_utils
+import image_utils as img_utils
 
 from keras.utils import np_utils
 from keras.models import Sequential, load_model
