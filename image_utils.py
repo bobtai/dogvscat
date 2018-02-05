@@ -51,7 +51,7 @@ def convert_images_to_array_in_tensorflow(image_paths):
     # resize images to small size for reducing computing
     compressed_images = tf.image.resize_images(resizing_images, [TARGET_WIDTH, TARGET_HEIGHT])
 
-    images_array = []
+    images_array = []  # to append the array of the images
     with tf.Session() as sess:
         # initial all variables
         initial = tf.global_variables_initializer()
@@ -61,7 +61,7 @@ def convert_images_to_array_in_tensorflow(image_paths):
         coord = tf.train.Coordinator()
         threads = tf.train.start_queue_runners(coord=coord)
 
-        # get all images matrix, and they were appended to images_array
+        # to get all images matrix, they were appended to images_array
         for i in range(len(image_paths)):
             one_image = sess.run(compressed_images)
             images_array.append(one_image)
@@ -147,16 +147,19 @@ def prepare_data(file_name, offset, length):
     :param length:
     :return: a cat and dog full 4D vector
     """
+    # prepare feature data
     cat_features = get_one_type_full_array(CAT, offset, length)
     dog_features = get_one_type_full_array(DOG, offset, length)
     all_features = cat_features + dog_features
     all_features = np.array(all_features, dtype=np.uint8)
 
+    # prepare label data
     cat_labels = [0] * length
     dog_labels = [1] * length
     all_labels = cat_labels + dog_labels
     all_labels = np.array(all_labels, dtype=np.uint8)
 
+    # randomize all data
     indexes = np.random.permutation(all_labels.shape[0])
     rand_all_features = all_features[indexes]
     rand_all_labels = all_labels[indexes]
