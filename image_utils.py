@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 
 from keras.preprocessing.image import load_img, img_to_array
 
-CAT_IMAGES_PATH = "/Users/Bob/PetImages/Cat/"
-DOG_IMAGES_PATH = "/Users/Bob/PetImages/Dog/"
-DATA_PATH = "/Users/Bob/dogvscat/data/"
-MODEL_PATH = "/Users/Bob/dogvscat/model/cnn_model.h5"
+CAT_IMAGES_PATH = "/Users/PChomeIM/PetImages/Cat/"
+DOG_IMAGES_PATH = "/Users/PChomeIM/PetImages/Dog/"
+DATA_PATH = "/Users/PChomeIM/dogvscat/data/"
+MODEL_PATH = "/Users/PChomeIM/dogvscat/model/cnn_model.h5"
 
 TRAIN_DATA = "train"
 TEST_DATA = "test"
@@ -34,9 +34,9 @@ def get_all_images_path(image_type):
     return all_images
 
 
-def convert_images_to_array_in_tensorflow(image_paths):
+def convert_images_to_array_with_tensorflow(image_paths):
     """
-    convert the input images to a 4D(len, 70, 70, 3) vector in tensorflow
+    convert the input images into a 4D(len, 70, 70, 3) vector with tensorflow
     :param image_paths:
     :return: an images vector which contains the features of input images
     """
@@ -51,7 +51,7 @@ def convert_images_to_array_in_tensorflow(image_paths):
     # resize images to small size for reducing computing
     compressed_images = tf.image.resize_images(resizing_images, [TARGET_WIDTH, TARGET_HEIGHT])
 
-    images_array = []  # to append the array of the images
+    images_array = []  # create an array to append all of the images
     with tf.Session() as sess:
         # initial all variables
         initial = tf.global_variables_initializer()
@@ -61,7 +61,7 @@ def convert_images_to_array_in_tensorflow(image_paths):
         coord = tf.train.Coordinator()
         threads = tf.train.start_queue_runners(coord=coord)
 
-        # to get all images matrix, they were appended to images_array
+        # getting every image matrices, and they were appended to images_array
         for i in range(len(image_paths)):
             one_image = sess.run(compressed_images)
             images_array.append(one_image)
@@ -73,9 +73,9 @@ def convert_images_to_array_in_tensorflow(image_paths):
     return images_array
 
 
-def convert_images_to_array_in_keras(image_paths):
+def convert_images_to_array_with_keras(image_paths):
     """
-    convert the input images to a 4D(len, 70, 70, 3) vector in keras
+    convert the input images to a 4D(len, 70, 70, 3) vector whith keras
     :param image_paths:
     :return: an images vector which contains the features of input images
     """
@@ -132,9 +132,9 @@ def get_one_type_full_array(type, offset, length):
     for i in range(offset, top, batch):
         batch_image_paths = image_paths[i:(i+batch)]
         if i == offset:
-            image_features = convert_images_to_array_in_keras(batch_image_paths)
+            image_features = convert_images_to_array_with_keras(batch_image_paths)
         else:
-            image_features = image_features + convert_images_to_array_in_keras(batch_image_paths)
+            image_features = image_features + convert_images_to_array_with_keras(batch_image_paths)
     print(type + ". " + str(offset) + "~" + str(top) + " is finished.")
     return image_features
 
