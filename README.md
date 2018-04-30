@@ -66,7 +66,8 @@ if __name__ == "__main__":
 classify_new_image.py
 ```python
 if __name__ == "__main__":
-    # 設定某張新圖的路徑
+    # 設定新圖的路徑
     input_image_path = "/Users/Bob/PetImages/Cat/2.jpg"
+    # 預測新圖的分類
     classify_new_image(input_image_path)
 ```
